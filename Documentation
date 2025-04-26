@@ -1,0 +1,43 @@
+1. Introduction:
+The task at hand is to build a model that classifies SMS messages as either spam or non-spam. This is a typical binary classification problem that falls under the umbrella of text classification, where we aim to develop a robust machine learning model to distinguish between legitimate messages and spam messages.
+
+2. Dataset:
+We used an SMS dataset with labeled messages categorized as either spam or non-spam. The goal is to preprocess the data, train a machine learning model, and evaluate its performance in distinguishing between these categories.
+
+3. Preprocessing the Text Data:
+Text Cleaning:
+The first step in preparing the text data is to clean it. This involves:
+Removing unnecessary characters (e.g., special symbols, digits, and punctuation).Converting the text to lowercase to standardize the format.
+Tokenizing the text to split it into individual words or tokens.
+Removing common stopwords, which do not contribute much meaning (e.g., "the", "is", "and").
+
+Tokenization:
+Tokenization was performed using the Tokenizer class from Keras. Tokenization involves converting the text data into sequences of integers, where each integer corresponds to a unique word in the corpus. We set the maximum number of words to 5,000 to limit the vocabulary size and prevent overfitting due to a very large number of unique words.
+
+Padding Sequences:
+Once the text is tokenized, the sequences need to be of equal length so that they can be input into the neural network. We used zero-padding to ensure all sequences are the same length, padding the sequences to a fixed length of 100 tokens.
+
+4. Model Building:
+LSTM Model:
+We chose an LSTM (Long Short-Term Memory) network for this classification task. LSTMs are suitable for sequential data (like text) as they can remember patterns over long distances in sequences. The model was constructed as follows:
+Embedding Layer: The first layer is the embedding layer, which learns dense word embeddings from the input text. This layer transforms the input integer sequences into dense vectors of fixed size.
+LSTM Layer: The second layer is an LSTM layer with 128 units. This layer processes the input sequence, learning temporal dependencies between the words in the text.
+Dense Layer: A dense layer with 1 output unit and a sigmoid activation function was used to make the binary classification (spam vs non-spam).
+Model Compilation:
+The model was compiled using the binary cross-entropy loss function and the Adam optimizer, both of which are standard choices for binary classification tasks. The binary cross-entropy loss function measures how well the model's predictions match the actual labels, while the Adam optimizer helps the model converge efficiently.
+
+5. Model Training:
+The model was trained using the training data with the following parameters:
+Epochs: We chose 5 epochs for training, meaning the model will go through the entire training dataset 5 times to adjust its weights and learn the optimal parameters.
+Batch Size: We used a batch size of 64, meaning the model processes 64 samples before updating the weights. This is a commonly used batch size for training deep learning models.
+Validation Data: We used the test set as the validation data to monitor the model’s performance after each epoch and avoid overfitting.
+During training, we observed the loss and accuracy metrics to ensure the model was learning effectively. If the training loss decreased and the accuracy increased, it indicated that the model was making progress in learning to classify spam and non-spam messages.
+
+6. Model Evaluation:
+After training the model, we evaluated its performance on the test data. The evaluation metrics provided insight into how well the model generalizes to unseen data.
+The accuracy of the model on the test data was 86.5%. This indicates that the model correctly classified the test messages as either spam or non-spam 86.5% of the time. This performance is a good starting point for a text classification task, but there is always room for improvement with further experimentation (e.g., tuning the model’s hyperparameters or trying different architectures).
+
+
+7. Conclusion:
+We successfully implemented a machine learning pipeline for spam SMS detection using an LSTM-based model. The model achieved an accuracy of 86.5% on the test data, which is a solid result for a baseline model. While the solution meets the project’s objectives, there is always room for further experimentation and enhancement to push the model's performance.
+
