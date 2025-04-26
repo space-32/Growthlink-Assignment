@@ -12,7 +12,7 @@ Ensure clean, well-documented, and efficient implementation.
 
 Project Steps and How to Run
 1. Clone the Repository
-git clone https://github.com/your-username/sms-spam-detection.git
+git clone https://github.com/space-32/Growthlink-Assignment.git
 cd sms-spam-detection
 2. Install Required Packages
 Make sure you have the following installed:
